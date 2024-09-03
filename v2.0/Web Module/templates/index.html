@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Recognition</title>
+    <style>
+        /* #container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+        #video {
+            flex: 3;
+        }
+        #prediction {
+            flex: 1;
+            font-size: 2em;
+            text-align: center;
+        } */
+         #prediction{
+            font-size: 2em;
+         }
+    </style>
+</head>
+<body>
+    <h1 align="center">Sign Language Recognition</h1>
+    <div id="container" align="center">
+        <div id="video">
+            <img src="{{ url_for('video_feed') }}" width="600" />
+        </div>
+        <div id="prediction">
+            <h2>Prediction: <span id="predicted-character">-</span></h2>
+        </div>
+    </div>
+    <script>
+        function fetchPrediction() {
+            fetch('/prediction')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('predicted-character').innerText = data.prediction || '-';
+                });
+        }
+        setInterval(fetchPrediction, 500);  // Fetch the prediction every 500ms
+    </script>
+</body>
+</html>
