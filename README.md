@@ -1,4 +1,7 @@
 # Sign-Language-EcoSystem
+
+(Instructions not updated. As of now run the main.py in the Final version, and go through the refined notebook for workflow clarity.)
+
 Run below commands for general usage:
 ```shell
 cd "v3.0"
